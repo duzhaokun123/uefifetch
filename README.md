@@ -36,8 +36,12 @@ TODO
   - Disk
   - Network
   - Version
+  - BGRT
+  - BIOS
   - ...
 - command line options
+- custom logo
+- use BGRT as logo
 
 ## Also see
 

@@ -1,0 +1,26 @@
+//
+// Created by o0kam1 on 25-4-12.
+//
+
+#ifndef UTILS_H
+#define UTILS_H
+
+#include <uefi.h>
+
+void* getConfigurationTable(efi_guid_t targetGuid);
+
+bool guidEqual(efi_guid_t a, efi_guid_t b);
+
+void waitForKey();
+
+void setCursorPosition(int x, int y);
+
+void getCursorPosition(int* x, int* y);
+
+void setTextColor(int attr);
+
+int getTextColor();
+
+bool haveShell();
+
+#endif //UTILS_H

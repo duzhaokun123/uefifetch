@@ -1,0 +1,17 @@
+
+{
+    "configurations": [
+        {
+            "name": "CLion",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include/**",
+            ],
+            "defines": [
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++20"
+        }
+    ],
+    "version": 4
+}

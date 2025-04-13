@@ -1,3 +1,5 @@
+English [简体中文](README.zh-CN.md)
+
 # UEFI fetch
 
 like any fetch for any platform, but for UEFI
@@ -12,7 +14,7 @@ Why not?
 
 ### Platforms
 
-- x86_64
+- UEFI x86_64
 
 ### Modules
 

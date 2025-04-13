@@ -7,8 +7,7 @@ add_executable(uefifetch.efi
         modules/Locale.cpp
         modules/UEFI.cpp
         modules/Memory.cpp
-        print.cpp
         modules/Placeholder.cpp
-        modules/Placeholder.h
+        print.cpp
 )
 target_link_libraries(uefifetch.efi posix-uefi)

@@ -46,3 +46,18 @@ bool haveShell() {
     efi_guid_t efiShellProtocolGuid = EFI_SHELL_PROTOCOL_GUID;
     return BS->LocateProtocol(&efiShellProtocolGuid, nullptr, reinterpret_cast<void**>(&efiShellProtocol)) == EFI_SUCCESS;
 }
+
+int ip4MaskToCIDR(EFI_IPv4_ADDRESS* mask) {
+    auto cidr = 0;
+    for (const auto i : mask->Addr) {
+        for (int j = 0; j < 8; j++) {
+            if ((i << j & 0b10000000) != 0) {
+                cidr++;
+            } else {
+                return cidr;
+            }
+        }
+    }
+    return cidr;
+}
+

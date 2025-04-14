@@ -9,5 +9,6 @@ add_executable(uefifetch.efi
         modules/Memory.cpp
         modules/Placeholder.cpp
         print.cpp
+        modules/IP4.cpp
 )
 target_link_libraries(uefifetch.efi posix-uefi)

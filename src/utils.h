@@ -5,6 +5,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <efi.h>
 #include <uefi.h>
 
 void* getConfigurationTable(efi_guid_t targetGuid);
@@ -22,5 +23,7 @@ void setTextColor(int attr);
 int getTextColor();
 
 bool haveShell();
+
+int ip4MaskToCIDR(EFI_IPv4_ADDRESS* mask);
 
 #endif //UTILS_H

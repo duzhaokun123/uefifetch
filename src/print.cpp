@@ -2,6 +2,7 @@
 // Created by o0kam1 on 25-4-13.
 //
 
+#include <efi.h>
 #include <uefi.h>
 #include "print.h"
 #include "utils.h"

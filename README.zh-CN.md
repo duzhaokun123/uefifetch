@@ -25,6 +25,7 @@
 - Memory
 - Locale
 - Placeholder
+- IP4
 
 ## 截图
 

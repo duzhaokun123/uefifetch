@@ -25,6 +25,7 @@ Why not?
 - Memory
 - Locale
 - Placeholder
+- IP4
 
 ## Gallery
 

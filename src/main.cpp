@@ -9,6 +9,7 @@
 #include "modules/PlaceHolder.h"
 #include "print.h"
 #include "logo.h"
+#include "modules/FS.h"
 #include "modules/IP4.h"
 
 void forModulePrintItem(const BaseModule* module) {
@@ -23,6 +24,7 @@ int main(int argc, char** argv) {
         new Shell(),
         new Display(),
         new Memory(),
+        new FS(),
         new IP4(),
         new Locale(),
         nullptr

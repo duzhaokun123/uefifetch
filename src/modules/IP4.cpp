@@ -39,7 +39,7 @@ IP4::IP4() : BaseModule() {
 IP4::~IP4() {
     for (int i = 0; i < itemCount; i++) {
         free((void*) items[i].name);
-        free((void*) items[i].vlue);
+        free((void*) items[i].value);
     }
     delete items;
 }

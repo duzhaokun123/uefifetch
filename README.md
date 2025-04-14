@@ -26,6 +26,8 @@ Why not?
 - Locale
 - Placeholder
 - IP4
+- FS
+- FS2
 
 ## Usage
 

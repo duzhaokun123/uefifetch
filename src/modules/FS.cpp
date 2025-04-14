@@ -17,24 +17,25 @@ FS::FS() : BaseModule() {
     simpleFileSystemProtocol->OpenVolume(simpleFileSystemProtocol, &root);
     efi_guid_t fileSystemInfoId = EFI_FILE_SYSTEM_INFO_ID;
     uintn_t bufferSize = 0;
-    EFI_FILE_SYSTEM_INFO* fileSystemInfo;
     root->GetInfo(root, &fileSystemInfoId, &bufferSize, nullptr);
-    root->GetInfo(root, &fileSystemInfoId, &bufferSize, &fileSystemInfo);
-    // const auto label = new char[32];
-    // wcstombs(label, reinterpret_cast<wchar_t*>(fileSystemInfo->VolumeLabel), fileSystemInfo->Size - SIZE_OF_EFI_FILE_SYSTEM_INFO);
+    const auto fileSystemInfo = static_cast<EFI_FILE_SYSTEM_INFO*>(malloc(bufferSize));
+    root->GetInfo(root, &fileSystemInfoId, &bufferSize, fileSystemInfo);
+    const auto label = new char[32];
+    wcstombs(label, reinterpret_cast<wchar_t*>(fileSystemInfo->VolumeLabel), fileSystemInfo->Size - SIZE_OF_EFI_FILE_SYSTEM_INFO);
     const auto totalMiB = fileSystemInfo->VolumeSize / 1024 / 1024;
     const auto usedMiB = (fileSystemInfo->VolumeSize - fileSystemInfo->FreeSpace) / 1024 / 1024;
     auto usedPercent = 0;
     if (totalMiB != 0) {
         usedPercent = (usedMiB * 100) / totalMiB;
     }
-    // sprintf(name, "FS (%s)", label);
-    sprintf(value, "%d/%d (%d%%)", usedMiB, totalMiB, usedPercent);
+    sprintf(name, "FS (%s)", label);
+    sprintf(value, "%d MiB / %d MiB (%d%%)", usedMiB, totalMiB, usedPercent);
     itemCount = 1;
-    const auto fsItem = ModuleItem{"FS", value};
+    const auto fsItem = ModuleItem{name, value};
     items = new ModuleItem[itemCount];
     items[0] = fsItem;
-    // delete label;
+    free(fileSystemInfo);
+    delete label;
 }
 
 FS::~FS() {

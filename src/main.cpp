@@ -10,11 +10,12 @@
 #include "print.h"
 #include "logo.h"
 #include "modules/FS.h"
+#include "modules/FS2.h"
 #include "modules/IP4.h"
 
 void forModulePrintItem(const BaseModule* module) {
     for (int i = 0; i < module->itemCount; i++) {
-        printf("%s: %s\n", module->items[i].name, module->items[i].vlue);
+        printf("%s: %s\n", module->items[i].name, module->items[i].value);
     }
 }
 
@@ -25,6 +26,7 @@ int main(int argc, char** argv) {
         new Display(),
         new Memory(),
         new FS(),
+        new FS2(),
         new IP4(),
         new Locale(),
         nullptr

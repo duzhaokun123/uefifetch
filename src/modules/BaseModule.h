@@ -7,7 +7,7 @@
 
 typedef struct {
     const char* name;
-    const char* vlue;
+    const char* value;
 } ModuleItem;
 
 class BaseModule {

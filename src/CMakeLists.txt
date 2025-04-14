@@ -11,5 +11,6 @@ add_executable(uefifetch.efi
         print.cpp
         modules/IP4.cpp
         modules/FS.cpp
+        modules/FS2.cpp
 )
 target_link_libraries(uefifetch.efi posix-uefi)

@@ -26,6 +26,8 @@
 - Locale
 - Placeholder
 - IP4
+- FS
+- FS2
 
 ## 用法
 

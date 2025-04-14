@@ -47,7 +47,7 @@ void printItems(const BaseModule** modules, const int labelColor, int* itemsX, i
             setTextColor(labelColor | startBackground);
             printf("%s: ", module->items[j].name);
             setTextColor(startAttribute);
-            printf("%s\n", module->items[j].vlue);
+            printf("%s\n", module->items[j].value);
             line++;
         }
     }

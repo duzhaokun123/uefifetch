@@ -27,6 +27,14 @@
 - Placeholder
 - IP4
 
+## 用法
+
+从 UEFI shell 调用, 使用 bootloader 链式引导, 直接从文件启动, ..., 或者你能想到任何方式
+
+一些主板带有有 bug 的 UEFI 实现, 导致 CPU 锁死
+
+尝试移除一些 uefifetch 模块
+
 ## 截图
 
 ![](arts/screenshot1.png)

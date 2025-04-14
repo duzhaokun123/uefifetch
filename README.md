@@ -27,6 +27,14 @@ Why not?
 - Placeholder
 - IP4
 
+## Usage
+
+call from UEFI shell, chainload by bootloader, direct boot from file, ..., anyway you want
+
+some motherboard have a buggy UEFI implementation, causing CPU freezing
+
+try remove some uefifetch modules
+
 ## Gallery
 
 ![](arts/screenshot1.png)

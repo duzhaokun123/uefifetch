@@ -30,19 +30,23 @@ char* smbiosGetString(const SMBIOS_STRUCTURE_POINTER smbiosStructure, const uint
 // TODO: split to multiple modules
 SMBIOS::SMBIOS() : BaseModule() {
     constexpr efi_guid_t smbiosTableGuid = SMBIOS_TABLE_GUID;
+    constexpr efi_guid_t smbios3TableGuid = SMBIOS3_TABLE_GUID;
     const auto smbiosTable = static_cast<SMBIOS_STRUCTURE_TABLE*>(getConfigurationTable(smbiosTableGuid));
-    if (smbiosTable == nullptr) {
+    const auto smbios3Table = static_cast<SMBIOS3_STRUCTURE_TABLE*>(getConfigurationTable(smbios3TableGuid));
+    SMBIOS_STRUCTURE_POINTER smbiosStructure;
+    auto maxTableCount = 0;
+    if (smbios3Table != nullptr) {
+        smbiosStructure.Raw = reinterpret_cast<UINT8*>(smbios3Table->TableAddress);
+        items = new ModuleItem[5]; // FIXME: calculate table count
+        maxTableCount = INT8_MAX;
+    } else if (smbiosTable != nullptr) {
+        smbiosStructure.Raw = reinterpret_cast<UINT8*>(smbiosTable->TableAddress);
+        items = new ModuleItem[smbiosTable->NumberOfSmbiosStructures];
+        maxTableCount = smbiosTable->NumberOfSmbiosStructures;
+    } else {
         return;
     }
-    SMBIOS_STRUCTURE_POINTER smbiosStructure;
-    smbiosStructure.Raw = reinterpret_cast<uint8_t*>(smbiosTable->TableAddress);
-    items = new ModuleItem[smbiosTable->NumberOfSmbiosStructures];
-    // items = new ModuleItem[smbiosTable->NumberOfSmbiosStructures + 1];
-    // auto smbiosItemValue = new char[32];
-    // sprintf(smbiosItemValue, "%d tables @0x%p", smbiosTable->NumberOfSmbiosStructures, smbiosTable->TableAddress);
-    // items[itemCount] = ModuleItem{"SMBIOS", smbiosItemValue};
-    // itemCount++;
-    for (int i = 0; i < smbiosTable->NumberOfSmbiosStructures; i++) {
+    for (int i = 0; i < maxTableCount; i++) {
         switch (smbiosStructure.Hdr->Type) {
             case 0: {
                 // BIOS
@@ -93,11 +97,17 @@ SMBIOS::SMBIOS() : BaseModule() {
                 itemCount++;
                 break;
             }
+            case 127: {
+                // End of Table
+                goto out_for;
+            }
             default:
                 break;
         }
         smbiosStructure.Raw = reinterpret_cast<uint8_t*>(reinterpret_cast<size_t>(smbiosStructure.Raw) + smbiosGetStructureSize(smbiosStructure));
     }
+out_for:
+
 }
 
 SMBIOS::~SMBIOS() {

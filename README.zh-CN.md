@@ -1,6 +1,6 @@
 [English](README.md) 简体中文
 
-# UEFI fetch
+# UEFIFetch
 
 就像任何平台的任何 fetch，但是 UEFI
 
@@ -30,6 +30,7 @@
 - FS
 - FS2
 - SMBIOS
+- UefiFetch
 
 ## 用法
 
@@ -41,7 +42,9 @@
 
 ## 截图
 
-![](arts/screenshot1.png)
+|                           |                           |
+|:-------------------------:|:-------------------------:|
+| ![](arts/screenshot1.png) | ![](arts/screenshot2.png) |
 
 ## TODO
 
@@ -50,7 +53,6 @@
   - CPU
   - Disk
   - Network
-  - Version
   - BGRT
   - ...
 - 命令行选项

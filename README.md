@@ -1,6 +1,6 @@
 English [简体中文](README.zh-CN.md)
 
-# UEFI fetch
+# UEFIFetch
 
 like any fetch for any platform, but for UEFI
 
@@ -30,6 +30,7 @@ Why not?
 - FS
 - FS2
 - SMBIOS
+- UefiFetch
 
 ## Usage
 
@@ -41,18 +42,19 @@ try remove some uefifetch modules
 
 ## Gallery
 
-![](arts/screenshot1.png)
+|                           |                           |
+|:-------------------------:|:-------------------------:|
+| ![](arts/screenshot1.png) | ![](arts/screenshot2.png) |
 
 ## TODO
 
 - more modules
-  - Battery
-  - CPU
-  - Disk
-  - Network
-  - Version
-  - BGRT
-  - ...
+    - Battery
+    - CPU
+    - Disk
+    - Network
+    - BGRT
+    - ...
 - command line options
 - custom logo
 - use BGRT as logo

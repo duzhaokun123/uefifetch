@@ -1,3 +1,4 @@
+set(VERSION "0.1.0")
 add_executable(uefifetch.efi
         main.cpp
         stl.cpp
@@ -13,5 +14,10 @@ add_executable(uefifetch.efi
         modules/FS.cpp
         modules/FS2.cpp
         modules/SMBIOS.cpp
+        modules/UefiFetch.cpp
 )
 target_link_libraries(uefifetch.efi posix-uefi)
+target_compile_definitions(uefifetch.efi PRIVATE
+        UEFIFETCH_ARCH="${ARCH}"
+        UEFIFETCH_VERSION="${VERSION}"
+)

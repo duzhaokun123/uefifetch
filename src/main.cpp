@@ -13,6 +13,7 @@
 #include "modules/FS.h"
 #include "modules/FS2.h"
 #include "modules/IP4.h"
+#include "modules/UefiFetch.h"
 
 void forModulePrintItem(const BaseModule* module) {
     for (int i = 0; i < module->itemCount; i++) {
@@ -31,6 +32,7 @@ int main(int argc, char** argv) {
         new FS2(),
         new IP4(),
         new Locale(),
+        new UefiFetch(),
         nullptr
     };
 

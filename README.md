@@ -15,6 +15,7 @@ Why not?
 ### Platforms
 
 - UEFI x86_64
+- UEFI aarch64
 
 ### Modules
 

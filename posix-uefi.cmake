@@ -1,10 +1,10 @@
 include_directories(./posix-uefi/uefi)
 
-if (CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+if (ARCH STREQUAL "x86_64")
     set(CRT_C ./posix-uefi/uefi/crt_x86_64.c)
-elseif (CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
+elseif (ARCH STREQUAL "aarch64")
     set(CRT_C ./posix-uefi/uefi/crt_aarch64.c)
-elseif (CMAKE_SYSTEM_PROCESSOR STREQUAL "riscv64")
+elseif (ARCH STREQUAL "riscv64")
     set(CRT_C ./posix-uefi/uefi/crt_riscv64.c)
 else ()
     message(FATAL_ERROR "only x86_64, aarch64 and riscv64 are supported, this ${CMAKE_SYSTEM_PROCESSOR} is not supported")

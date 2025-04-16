@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSharedSettings">
+    <configurations>
+      <configuration PROFILE_NAME="x86_64" ENABLED="true" CONFIG_NAME="Release" TOOLCHAIN_NAME="WSL (Arch)" GENERATION_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=$CMakeProjectDir$/x86_64-uefi-clang.cmake" NO_GENERATOR="true" />
+      <configuration PROFILE_NAME="aarch64" ENABLED="true" CONFIG_NAME="Release" TOOLCHAIN_NAME="WSL (Arch)" GENERATION_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=$CMakeProjectDir$/aarch64-uefi-clang.cmake" NO_GENERATOR="true" />
+    </configurations>
+  </component>
+</project>

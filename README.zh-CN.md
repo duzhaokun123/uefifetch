@@ -28,6 +28,7 @@
 - IP4
 - FS
 - FS2
+- SMBIOS
 
 ## 用法
 
@@ -50,7 +51,6 @@
   - Network
   - Version
   - BGRT
-  - BIOS
   - ...
 - 命令行选项
 - 自定义 logo
@@ -59,7 +59,8 @@
 ## 也看看
 
 - [UEFI](https://uefi.org/)
-- [EDK II](https://github.com/tianocore/edk2)
+- [SMBIOS](https://www.dmtf.org/standards/smbios)
+- [OSDev.org](https://wiki.osdev.org/)
 - [Index of “Step to UEFI”](https://www.lab-z.com/iof/)
 - [从零开始的UEFI裸机编程](https://kagurazakakotori.github.io/ubmp-cn/index.html)
 - [フルスクラッチで作る!UEFIベアメタルプログラミング (日文)](http://yuma.ohgami.jp/UEFI-Bare-Metal-Programming/index.html)

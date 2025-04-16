@@ -9,6 +9,7 @@
 #include "modules/PlaceHolder.h"
 #include "print.h"
 #include "logo.h"
+#include "modules/SMBIOS.h"
 #include "modules/FS.h"
 #include "modules/FS2.h"
 #include "modules/IP4.h"
@@ -22,6 +23,7 @@ void forModulePrintItem(const BaseModule* module) {
 int main(int argc, char** argv) {
     const BaseModule* items[] = {
         new UEFI(),
+        new SMBIOS(),
         new Shell(),
         new Display(),
         new Memory(),

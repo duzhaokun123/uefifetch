@@ -28,6 +28,7 @@ Why not?
 - IP4
 - FS
 - FS2
+- SMBIOS
 
 ## Usage
 
@@ -50,7 +51,6 @@ try remove some uefifetch modules
   - Network
   - Version
   - BGRT
-  - BIOS
   - ...
 - command line options
 - custom logo
@@ -59,6 +59,8 @@ try remove some uefifetch modules
 ## Also see
 
 - [UEFI](https://uefi.org/)
+- [SMBIOS](https://www.dmtf.org/standards/smbios)
+- [OSDev.org](https://wiki.osdev.org/)
 - [EDK II](https://github.com/tianocore/edk2)
 - [Index of “Step to UEFI” (zh-CN)](https://www.lab-z.com/iof/)
 - [从零开始的UEFI裸机编程 (zh-CN)](https://kagurazakakotori.github.io/ubmp-cn/index.html)

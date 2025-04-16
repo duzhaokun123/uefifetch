@@ -13,7 +13,6 @@ public:
     ~FS();
 
 private:
-    char name[64] = {};
     char value[64] = {};
 };
 

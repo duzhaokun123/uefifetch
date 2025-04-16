@@ -80,6 +80,7 @@ void printColors(int* colorsX, int* colorsY, int* colorsWidth, int* colorsHeight
     printf(BLOCK);
     setTextColor(EFI_LIGHTGRAY | EFI_BACKGROUND_LIGHTGRAY);
     printf(BLOCK);
+    setTextColor(startAttribute);
     printf("\n");
     getCursorPosition(&x, &y);
     setCursorPosition(startX, y);
@@ -99,6 +100,7 @@ void printColors(int* colorsX, int* colorsY, int* colorsWidth, int* colorsHeight
     printf(BLOCK);
     setTextColor(EFI_WHITE | EFI_BACKGROUND_LIGHTGRAY);
     printf(BLOCK);
+    setTextColor(startAttribute);
     printf("\n");
 #undef BLOCK
     *colorsX = startX;

@@ -20,22 +20,18 @@ FS::FS() : BaseModule() {
     root->GetInfo(root, &fileSystemInfoId, &bufferSize, nullptr);
     const auto fileSystemInfo = static_cast<EFI_FILE_SYSTEM_INFO*>(malloc(bufferSize));
     root->GetInfo(root, &fileSystemInfoId, &bufferSize, fileSystemInfo);
-    const auto label = new char[32];
-    wcstombs(label, reinterpret_cast<wchar_t*>(fileSystemInfo->VolumeLabel), fileSystemInfo->Size - SIZE_OF_EFI_FILE_SYSTEM_INFO);
     const auto totalMiB = fileSystemInfo->VolumeSize / 1024 / 1024;
     const auto usedMiB = (fileSystemInfo->VolumeSize - fileSystemInfo->FreeSpace) / 1024 / 1024;
     auto usedPercent = 0;
     if (totalMiB != 0) {
         usedPercent = (usedMiB * 100) / totalMiB;
     }
-    sprintf(name, "FS (%s)", label);
     sprintf(value, "%d MiB / %d MiB (%d%%)", usedMiB, totalMiB, usedPercent);
     itemCount = 1;
-    const auto fsItem = ModuleItem{name, value};
+    const auto fsItem = ModuleItem{"FS (.)", value};
     items = new ModuleItem[itemCount];
     items[0] = fsItem;
     free(fileSystemInfo);
-    delete label;
 }
 
 FS::~FS() {

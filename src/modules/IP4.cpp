@@ -13,11 +13,17 @@ IP4::IP4() : BaseModule() {
     efi_guid_t ip4ServiceBindingProtocolGuid = EFI_IP4_SERVICE_BINDING_PROTOCOL;
     efi_guid_t ip4Config2ProtocolGuid = EFI_IP4_CONFIG2_PROTOCOL_GUID;
     uintn_t handleCount = 0;
-    BS->LocateHandleBuffer(ByProtocol, &ip4ServiceBindingProtocolGuid, nullptr, &handleCount, &handles);
+    auto r = BS->LocateHandleBuffer(ByProtocol, &ip4ServiceBindingProtocolGuid, nullptr, &handleCount, &handles);
+    if (r != EFI_SUCCESS) {
+        return;
+    }
     items = new ModuleItem[handleCount];
     for (uintn_t i = 0; i < handleCount; i++) {
         EFI_IP4_CONFIG2_PROTOCOL* ip4Config2Protocol;
-        BS->HandleProtocol(handles[i], &ip4Config2ProtocolGuid, reinterpret_cast<void**>(&ip4Config2Protocol));
+        r = BS->HandleProtocol(handles[i], &ip4Config2ProtocolGuid, reinterpret_cast<void**>(&ip4Config2Protocol));
+        if (r != EFI_SUCCESS) {
+            continue;
+        }
         uintn_t dataSize = 0;
         ip4Config2Protocol->GetData(ip4Config2Protocol, Ip4Config2DataTypeInterfaceInfo, &dataSize, nullptr);
         const auto ifInfo = static_cast<EFI_IP4_CONFIG2_INTERFACE_INFO*>(malloc(dataSize));

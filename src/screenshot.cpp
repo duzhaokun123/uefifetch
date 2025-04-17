@@ -23,21 +23,7 @@ uint8_t saveScreenShot(const char* fileName) {
         imgPixels[i].Red = imgPixels[i].Reserved;
         imgPixels[i].Reserved = 0xFF;
     }
-    uint8_t* pngData = nullptr;
-    size_t pngSize = 0;
-    auto r = lodepng_encode32(&pngData, &pngSize, reinterpret_cast<uint8_t*>(imgPixels), screenWidth, screenHeight);
-    if (r != 0) goto clean;
-    const auto file = fopen(fileName, "w");
-    if (file == nullptr) {
-        r = 79;
-        goto clean;
-    }
-    fwrite(pngData, pngSize, 1, file);
-clean:
-    if (file != nullptr) {
-        fclose(file);
-    }
-    free(pngData);
+    const auto r = lodepng_encode32_file(fileName, reinterpret_cast<uint8_t*>(imgPixels), screenWidth, screenHeight);
     delete[] imgPixels;
     return r;
 }

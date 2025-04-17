@@ -3,7 +3,6 @@ add_library(lodepng STATIC
 )
 target_compile_definitions(lodepng PUBLIC
         LODEPNG_NO_COMPILE_DECODER
-        LODEPNG_NO_COMPILE_DISK
         LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS
         LODEPNG_NO_COMPILE_CPP
 )

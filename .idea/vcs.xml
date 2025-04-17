@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/gnu-efi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lodepng" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/posix-uefi" vcs="Git" />
   </component>
 </project>

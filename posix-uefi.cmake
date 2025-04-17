@@ -1,5 +1,3 @@
-include_directories(./posix-uefi/uefi)
-
 if (ARCH STREQUAL "x86_64")
     set(CRT_C ./posix-uefi/uefi/crt_x86_64.c)
 elseif (ARCH STREQUAL "aarch64")
@@ -19,4 +17,5 @@ add_library(posix-uefi STATIC
         ./posix-uefi/uefi/stdlib.c
         ./posix-uefi/uefi/string.c
         ./posix-uefi/uefi/time.c
-        ./posix-uefi/uefi/unistd.c)
+        ./posix-uefi/uefi/unistd.c
+)

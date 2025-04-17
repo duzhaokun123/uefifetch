@@ -6,4 +6,6 @@ set(CMAKE_C_STANDARD 23)
 set(CMAKE_CPP_STANDARD 23)
 
 include(posix-uefi.cmake)
+include(lodepng.cmake)
+
 add_subdirectory(src)

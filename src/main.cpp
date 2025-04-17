@@ -1,4 +1,5 @@
 #include <efi.h>
+#include <lodepng.h>
 #include <uefi.h>
 #include "utils.h"
 #include "modules/Display.h"
@@ -9,6 +10,7 @@
 #include "modules/PlaceHolder.h"
 #include "print.h"
 #include "logo.h"
+#include "screenshot.h"
 #include "modules/SMBIOS.h"
 #include "modules/FS.h"
 #include "modules/FS2.h"
@@ -52,6 +54,15 @@ int main(int argc, char** argv) {
     const auto rightHeight = itemsHeight + 1 + colorsHeight;
     setCursorPosition(0, y1 + colorsHeight + (leftHeight > rightHeight ? (leftHeight - rightHeight) : 0) + 1);
     printf("\n");
+
+    const auto fileName = "uefifetch.png";
+    printf("Save screenshot to %s...", fileName);
+    const auto r = saveScreenShot(fileName);
+    if (r == 0) {
+        printf("OK\n");
+    } else {
+        printf("Failed (%s)\n", lodepng_error_text(r));
+    }
 
     if (not haveShell()) {
         printf("Press any key to continue...\n");

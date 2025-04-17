@@ -4,3 +4,6 @@
 [submodule "gnu-efi"]
 	path = gnu-efi
 	url = https://github.com/rhboot/gnu-efi.git
+[submodule "lodepng"]
+	path = lodepng
+	url = https://github.com/lvandeve/lodepng.git

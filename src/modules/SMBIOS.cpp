@@ -6,6 +6,9 @@
 #include <uefi.h>
 #include <libsmbios.h>
 #include "SMBIOS.h"
+
+#include <uefi.h>
+
 #include "../utils.h"
 
 size_t smbiosGetStructureSize(const SMBIOS_STRUCTURE_POINTER smbiosStructure) {
@@ -38,7 +41,7 @@ SMBIOS::SMBIOS() : BaseModule() {
     if (smbios3Table != nullptr) {
         smbiosStructure.Raw = reinterpret_cast<UINT8*>(smbios3Table->TableAddress);
         items = new ModuleItem[5]; // FIXME: calculate table count
-        maxTableCount = INT8_MAX;
+        maxTableCount = 100;
     } else if (smbiosTable != nullptr) {
         smbiosStructure.Raw = reinterpret_cast<UINT8*>(smbiosTable->TableAddress);
         items = new ModuleItem[smbiosTable->NumberOfSmbiosStructures];

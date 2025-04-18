@@ -3,7 +3,7 @@
 mkdir -p ./esp/EFI/BOOT
 cp -v "./cmake-build-$ARCH/src/uefifetch.efi" ./esp
 echo "FS0:" > ./esp/EFI/BOOT/startup.nsh
-echo uefifetch.efi >> ./esp/EFI/BOOT/startup.nsh
+echo "uefifetch.efi" >> ./esp/EFI/BOOT/startup.nsh
 
 qemu_exe=qemu-system-$ARCH
 

@@ -55,7 +55,6 @@
   - Network
   - BGRT
   - ...
-- 命令行选项
 - 自定义 logo
 - BGRT 作为 logo
 

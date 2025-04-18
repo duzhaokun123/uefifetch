@@ -55,7 +55,6 @@ try remove some uefifetch modules
     - Network
     - BGRT
     - ...
-- command line options
 - custom logo
 - use BGRT as logo
 

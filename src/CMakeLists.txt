@@ -22,6 +22,7 @@ add_executable(uefifetch.efi
 target_link_libraries(uefifetch.efi
         posix-uefi
         lodepng
+        cargs
 )
 
 target_compile_definitions(uefifetch.efi PRIVATE

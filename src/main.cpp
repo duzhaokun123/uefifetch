@@ -33,6 +33,13 @@ static struct cag_option options[]{
         .description = "Save screenshot to PATH (default: uefifetch.png)",
     },
     {
+        .identifier = 'w',
+        .access_letters = "w",
+        .access_name = "wait",
+        .value_name = "WAIT",
+        .description = "Wait for input before exiting (default: auto)",
+    },
+    {
         .identifier = 'v',
         .access_letters = "v",
         .access_name = "version",
@@ -49,6 +56,8 @@ static struct cag_option options[]{
 int main(const int argc, char** argv) {
     bool noScreenshot = false;
     auto screenshotPath = "uefifetch.png";
+    bool wait = false;
+    bool noWait = false;
 
     cag_option_context optionContext;
     cag_option_init(&optionContext, options, CAG_ARRAY_SIZE(options), argc, argv);
@@ -60,6 +69,18 @@ int main(const int argc, char** argv) {
             }
             case 's': {
                 screenshotPath = cag_option_get_value(&optionContext);
+                break;
+            }
+            case 'w': {
+                const auto w = cag_option_get_value(&optionContext);
+                if (strcmp(w, "true") == 0) {
+                    wait = true;
+                } else if (strcmp(w, "false") == 0) {
+                    noWait = true;
+                } else {
+                    printf("Invalid value for --wait: %s\n", w);
+                    return EFI_INVALID_PARAMETER;
+                }
                 break;
             }
             case 'v': {
@@ -124,7 +145,7 @@ int main(const int argc, char** argv) {
         }
     }
 
-    if (not haveShell()) {
+    if (wait || (not noWait && not haveShell())) {
         printf("Press any key to continue...\n");
         waitForKey();
     }

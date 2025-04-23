@@ -18,7 +18,7 @@
 #include "modules/UefiFetch.h"
 #include <cargs.h>
 
-static struct cag_option options[]{
+static cag_option options[]{
     {
         .identifier = 'S',
         .access_letters = nullptr,
@@ -79,7 +79,7 @@ int main(const int argc, char** argv) {
                     noWait = true;
                 } else {
                     printf("Invalid value for --wait: %s\n", w);
-                    return EFI_INVALID_PARAMETER;
+                    return SHELL_INVALID_PARAMETER;
                 }
                 break;
             }
@@ -87,14 +87,14 @@ int main(const int argc, char** argv) {
                 printf("uefifetch\n");
                 printf("%s\n", argv[0]);
                 printf("%s (%s, %s)\n", UEFIFETCH_VERSION, UEFIFETCH_ARCH, __VERSION__);
-                return EFI_SUCCESS;
+                return SHELL_SUCCESS;
             }
             case 'h': {
                 printf("Usage: %s [OPTION]\n", argv[0]);
                 printf("\n");
                 printf("OPTION:\n");
                 cag_option_print(options, CAG_ARRAY_SIZE(options), stdout);
-                return EFI_SUCCESS;
+                return SHELL_SUCCESS;
             }
             case '?': {
                 cag_option_print_error(&optionContext, stdout);
@@ -150,5 +150,5 @@ int main(const int argc, char** argv) {
         waitForKey();
     }
 
-    return 0;
+    return SHELL_SUCCESS;
 }

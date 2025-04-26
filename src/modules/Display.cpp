@@ -2,7 +2,7 @@
 // Created by o0kam1 on 25-4-12.
 //
 
-#include "display.h"
+#include "Display.h"
 #include <uefi.h>
 
 Display::Display() : BaseModule() {

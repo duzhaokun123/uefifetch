@@ -1,6 +1,6 @@
 set(VERSION "0.1.0")
 
-add_executable(uefifetch.efi
+add_executable(uefifetch
         main.cpp
         stl.cpp
         utils.cpp
@@ -19,13 +19,13 @@ add_executable(uefifetch.efi
         screenshot.cpp
 )
 
-target_link_libraries(uefifetch.efi
+target_link_libraries(uefifetch
         posix-uefi
         lodepng
         cargs
 )
 
-target_compile_definitions(uefifetch.efi PRIVATE
-        UEFIFETCH_ARCH="${ARCH}"
+target_compile_definitions(uefifetch PRIVATE
+        UEFIFETCH_ARCH="${CMAKE_SYSTEM_PROCESSOR}"
         UEFIFETCH_VERSION="${VERSION}"
 )

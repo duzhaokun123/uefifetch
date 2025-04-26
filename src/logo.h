@@ -5,7 +5,9 @@
 #ifndef LOGO_H
 #define LOGO_H
 
-const char* defaultLogo[] = {
+#pragma clang diagnostic ignored "-Wtrigraphs"
+
+inline const char* defaultLogo[] = {
     "          .^!??~              ",
     "      .:~7?7~:    .:!~:       ",
     "    ^7?7~:     :~?5PY7:      .",

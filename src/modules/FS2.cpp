@@ -13,6 +13,8 @@ FS2::FS2() : BaseModule() {
     uintn_t handleCount = 0;
     BS->LocateHandleBuffer(ByProtocol, &simpleFileSystemProtocolGuid, nullptr, &handleCount, &handles);
     items = new ModuleItem[handleCount];
+    efi_simple_file_system_protocol_t* defaultSFSP;
+    BS->LocateProtocol(&simpleFileSystemProtocolGuid, nullptr, reinterpret_cast<void**>(&defaultSFSP));
     for (uintn_t i = 0; i < handleCount; i++) {
         efi_simple_file_system_protocol_t* simpleFileSystemProtocol;
         BS->HandleProtocol(handles[i], &simpleFileSystemProtocolGuid, reinterpret_cast<void**>(&simpleFileSystemProtocol));
@@ -27,9 +29,9 @@ FS2::FS2() : BaseModule() {
         const auto totalMiB = fileSystemInfo->VolumeSize / 1024 / 1024;
         const auto usedMiB = (fileSystemInfo->VolumeSize - fileSystemInfo->FreeSpace) / 1024 / 1024;
         const auto usedPercent = usedMiB * 100 / totalMiB;
-        const auto itemName = new char[strlen(label) + 7];
+        const auto itemName = new char[strlen(label) + 8];
         const auto itemValue = new char[40];
-        sprintf(itemName, "FS (%s)", label);
+        sprintf(itemName, "FS (%s)%s", label, simpleFileSystemProtocol == defaultSFSP ? "*" : "");
         sprintf(itemValue, "%d MiB / %d MiB (%d%%)", usedMiB, totalMiB, usedPercent);
         items[i] = ModuleItem{itemName, itemValue};
         itemCount++;

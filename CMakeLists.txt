@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 4.0.1)
 
 if (NOT CMAKE_SYSTEM_PROCESSOR)
     message(FATAL_ERROR "CMAKE_SYSTEM_PROCESSOR is not set, please set it to x86_64, aarch64 or riscv64")

@@ -12,7 +12,6 @@
 #include "logo.h"
 #include "screenshot.h"
 #include "modules/SMBIOS.h"
-#include "modules/FS.h"
 #include "modules/FS2.h"
 #include "modules/IP4.h"
 #include "modules/UefiFetch.h"
@@ -110,7 +109,6 @@ int main(const int argc, char** argv) {
         new Shell(),
         new Display(),
         new Memory(),
-        new FS(),
         new FS2(),
         new IP4(),
         new Locale(),

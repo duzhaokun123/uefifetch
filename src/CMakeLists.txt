@@ -9,10 +9,9 @@ add_executable(uefifetch
         modules/Locale.cpp
         modules/UEFI.cpp
         modules/Memory.cpp
-        modules/Placeholder.cpp
+        modules/PlaceHolder.cpp
         print.cpp
         modules/IP4.cpp
-        modules/FS.cpp
         modules/FS2.cpp
         modules/SMBIOS.cpp
         modules/UefiFetch.cpp

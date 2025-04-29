@@ -12,8 +12,8 @@ typedef struct {
 
 class BaseModule {
 public:
-    int itemCount;
-    ModuleItem* items;
+    int itemCount = 0;
+    ModuleItem* items = nullptr;
 };
 
 #endif //BASE_H

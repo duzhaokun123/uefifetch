@@ -49,7 +49,7 @@ bool haveShell() {
 
 int ip4MaskToCIDR(EFI_IPv4_ADDRESS* mask) {
     auto cidr = 0;
-    for (const auto i : mask->Addr) {
+    for (const auto i: mask->Addr) {
         for (int j = 0; j < 8; j++) {
             if ((i << j & 0b10000000) != 0) {
                 cidr++;
@@ -61,3 +61,17 @@ int ip4MaskToCIDR(EFI_IPv4_ADDRESS* mask) {
     return cidr;
 }
 
+const char* pixelFormatToString(EFI_GRAPHICS_PIXEL_FORMAT format) {
+    switch (format) {
+        case PixelBlueGreenRedReserved8BitPerColor:
+            return "BGRX8888";
+        case PixelRedGreenBlueReserved8BitPerColor:
+            return "RGBX8888";
+        case PixelBitMask:
+            return "BitMask";
+        case PixelBltOnly:
+            return "BltOnly";
+        default:
+            return "unknown";
+    }
+}

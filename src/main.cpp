@@ -2,7 +2,6 @@
 #include <lodepng.h>
 #include <uefi.h>
 #include "utils.h"
-#include "modules/Display.h"
 #include "modules/Locale.h"
 #include "modules/Memory.h"
 #include "modules/Shell.h"
@@ -16,6 +15,9 @@
 #include "modules/IP4.h"
 #include "modules/UefiFetch.h"
 #include <cargs.h>
+
+#include "modules/GOP.h"
+#include "modules/STOP.h"
 
 static cag_option options[]{
     {
@@ -107,7 +109,8 @@ int main(const int argc, char** argv) {
         new UEFI(),
         new SMBIOS(),
         new Shell(),
-        new Display(),
+        new STOP(),
+        new GOP,
         new Memory(),
         new FS2(),
         new IP4(),

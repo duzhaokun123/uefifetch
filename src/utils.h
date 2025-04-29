@@ -26,4 +26,6 @@ bool haveShell();
 
 int ip4MaskToCIDR(EFI_IPv4_ADDRESS* mask);
 
+const char* pixelFormatToString(efi_gop_pixel_format_t format);
+
 #endif //UTILS_H

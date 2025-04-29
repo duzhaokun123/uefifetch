@@ -4,7 +4,6 @@ add_executable(uefifetch
         main.cpp
         stl.cpp
         utils.cpp
-        modules/Display.cpp
         modules/Shell.cpp
         modules/Locale.cpp
         modules/UEFI.cpp
@@ -16,6 +15,8 @@ add_executable(uefifetch
         modules/SMBIOS.cpp
         modules/UefiFetch.cpp
         screenshot.cpp
+        modules/GOP.cpp
+        modules/STOP.cpp
 )
 
 target_link_libraries(uefifetch

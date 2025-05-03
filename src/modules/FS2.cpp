@@ -14,7 +14,7 @@ FS2::FS2() : BaseModule() {
     BS->LocateHandleBuffer(ByProtocol, &simpleFileSystemProtocolGuid, nullptr, &handleCount, &handles);
     items = new ModuleItem[handleCount];
     efi_simple_file_system_protocol_t* defaultSFSP;
-    BS->LocateProtocol(&simpleFileSystemProtocolGuid, nullptr, reinterpret_cast<void**>(&defaultSFSP));
+    BS->HandleProtocol(LIP->DeviceHandle, &simpleFileSystemProtocolGuid, reinterpret_cast<void**>(&defaultSFSP));
     for (uintn_t i = 0; i < handleCount; i++) {
         efi_simple_file_system_protocol_t* simpleFileSystemProtocol;
         BS->HandleProtocol(handles[i], &simpleFileSystemProtocolGuid, reinterpret_cast<void**>(&simpleFileSystemProtocol));

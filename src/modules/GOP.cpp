@@ -15,7 +15,7 @@ GOP::GOP() {
     BS->LocateHandleBuffer(ByProtocol, &gopGuid, nullptr, &handleCount, &handles);
     items = new ModuleItem[handleCount];
     efi_gop_t* defaultGop;
-    BS->LocateProtocol(&gopGuid, nullptr, reinterpret_cast<void**>(&defaultGop));
+    BS->HandleProtocol(&gopGuid, nullptr, reinterpret_cast<void**>(&defaultGop));
     for (uintn_t i = 0; i < handleCount; i++) {
         efi_gop_t* gop;
         BS->HandleProtocol(handles[i], &gopGuid, reinterpret_cast<void**>(&gop));

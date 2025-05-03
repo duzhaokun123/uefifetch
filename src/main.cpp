@@ -2,6 +2,7 @@
 #include <lodepng.h>
 #include <uefi.h>
 #include "utils.h"
+#include <cargs.h>
 #include "modules/Locale.h"
 #include "modules/Memory.h"
 #include "modules/Shell.h"
@@ -14,8 +15,6 @@
 #include "modules/FS2.h"
 #include "modules/IP4.h"
 #include "modules/UefiFetch.h"
-#include <cargs.h>
-
 #include "modules/GOP.h"
 #include "modules/STOP.h"
 

@@ -1,22 +1,13 @@
 set(VERSION "0.1.0")
 
+aux_source_directory(. SRC)
+aux_source_directory(modules MODULES)
+aux_source_directory(protocols PROTOCOLS)
+
 add_executable(uefifetch
-        main.cpp
-        stl.cpp
-        utils.cpp
-        modules/Shell.cpp
-        modules/Locale.cpp
-        modules/UEFI.cpp
-        modules/Memory.cpp
-        modules/PlaceHolder.cpp
-        print.cpp
-        modules/IP4.cpp
-        modules/FS2.cpp
-        modules/SMBIOS.cpp
-        modules/UefiFetch.cpp
-        screenshot.cpp
-        modules/GOP.cpp
-        modules/STOP.cpp
+        ${SRC}
+        ${MODULES}
+        ${PROTOCOLS}
 )
 
 target_link_libraries(uefifetch

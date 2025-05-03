@@ -15,6 +15,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_LINKER_TYPE "LLD")
 
 set(COMMON_FLAGS "--target=${CMAKE_SYSTEM_PROCESSOR}-pc-win32-coff -fshort-wchar -fno-strict-aliasing -ffreestanding -fno-stack-protector -fno-stack-check -mno-red-zone -Wno-builtin-requires-header -Wno-incompatible-library-redeclaration -Wno-long-long -DHAVE_USE_MS_ABI -fno-rtti")
+string(APPEND COMMON_FLAGS " -O3")
 string(APPEND CMAKE_C_FLAGS " ${COMMON_FLAGS}")
 string(APPEND CMAKE_CXX_FLAGS " ${COMMON_FLAGS} -fno-exceptions")
 

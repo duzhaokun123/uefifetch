@@ -17,9 +17,9 @@ STOP::STOP() {
     for (uintn_t i = 0; i < handleCount; i++) {
         EFI_SIMPLE_TEXT_OUT_PROTOCOL* stop;
         BS->HandleProtocol(handles[i], &stopGuid, reinterpret_cast<void**>(&stop));
-        const auto itemName = new char[10];
+        const auto itemName = new char[11];
         const auto itemValue = new char[32];
-        sprintf(itemName, "STOP(%u)%s", static_cast<uint32_t>(i), stop == defaultStop ? "*" : "");
+        sprintf(itemName, "STOP (%u)%s", static_cast<uint32_t>(i), stop == defaultStop ? "*" : "");
         uintn_t width, height;
         stop->QueryMode(stop, stop->Mode->Mode, &width, &height);
         sprintf(itemValue, "%ux%u (text)", static_cast<uint32_t>(width), static_cast<uint32_t>(height));

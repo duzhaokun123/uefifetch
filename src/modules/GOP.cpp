@@ -15,14 +15,14 @@ GOP::GOP() {
     BS->LocateHandleBuffer(ByProtocol, &gopGuid, nullptr, &handleCount, &handles);
     items = new ModuleItem[handleCount];
     efi_gop_t* defaultGop;
-    BS->HandleProtocol(&gopGuid, nullptr, reinterpret_cast<void**>(&defaultGop));
+    BS->LocateProtocol(&gopGuid, nullptr, reinterpret_cast<void**>(&defaultGop));
     for (uintn_t i = 0; i < handleCount; i++) {
         efi_gop_t* gop;
         BS->HandleProtocol(handles[i], &gopGuid, reinterpret_cast<void**>(&gop));
         const auto modeInfo = gop->Mode->Information;
-        const auto itemName = new char[9];
+        const auto itemName = new char[10];
         const auto itemValue = new char[32];
-        sprintf(itemName, "GOP(%u)%s", static_cast<uint32_t>(i), gop == defaultGop ? "*" : "");
+        sprintf(itemName, "GOP (%u)%s", static_cast<uint32_t>(i), gop == defaultGop ? "*" : "");
         sprintf(itemValue, "%dx%d (%s)", modeInfo->HorizontalResolution, modeInfo->VerticalResolution, pixelFormatToString(modeInfo->PixelFormat));
         items[itemCount] = ModuleItem{itemName, itemValue};
         itemCount++;

@@ -7,11 +7,15 @@
 #include "IP4.h"
 #include "../protocols/EFI_IP4_CONFIG2_PROTOCOL.h"
 #include "../utils.h"
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 
 IP4::IP4() : BaseModule() {
-    efi_handle_t* handles = nullptr;
-    efi_guid_t ip4ServiceBindingProtocolGuid = EFI_IP4_SERVICE_BINDING_PROTOCOL;
-    efi_guid_t ip4Config2ProtocolGuid = EFI_IP4_CONFIG2_PROTOCOL_GUID;
+    EFI_HANDLE* handles = nullptr;
+    EFI_GUID ip4ServiceBindingProtocolGuid = EFI_IP4_SERVICE_BINDING_PROTOCOL;
+    EFI_GUID ip4Config2ProtocolGuid = EFI_IP4_CONFIG2_PROTOCOL_GUID;
     uintn_t handleCount = 0;
     auto r = BS->LocateHandleBuffer(ByProtocol, &ip4ServiceBindingProtocolGuid, nullptr, &handleCount, &handles);
     if (r != EFI_SUCCESS) {

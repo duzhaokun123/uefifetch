@@ -3,6 +3,8 @@
 #include <uefi.h>
 #include "utils.h"
 #include <cargs.h>
+#include <version.h>
+
 #include "modules/Locale.h"
 #include "modules/Memory.h"
 #include "modules/Shell.h"
@@ -86,7 +88,7 @@ int main(const int argc, char** argv) {
             case 'v': {
                 printf("uefifetch\n");
                 printf("%s\n", argv[0]);
-                printf("%s (%s, %s)\n", UEFIFETCH_VERSION, UEFIFETCH_ARCH, __VERSION__);
+                printf("%s (%s, %s)\n", PROJECT_VERSION, CMAKE_SYSTEM_PROCESSOR, __VERSION__);
                 return SHELL_SUCCESS;
             }
             case 'h': {

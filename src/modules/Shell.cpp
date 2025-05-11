@@ -6,9 +6,11 @@
 #include <uefi.h>
 #include "Shell.h"
 
+#include <cstdio>
+
 Shell::Shell() : BaseModule() {
     EFI_SHELL_PROTOCOL* efiShellProtocol;
-    efi_guid_t efiShellProtocolGuid = EFI_SHELL_PROTOCOL_GUID;
+    EFI_GUID efiShellProtocolGuid = EFI_SHELL_PROTOCOL_GUID;
     if (BS->LocateProtocol(&efiShellProtocolGuid, nullptr, reinterpret_cast<void**>(&efiShellProtocol)) != EFI_SUCCESS) {
         sprintf(shellName, "none");
     } else {

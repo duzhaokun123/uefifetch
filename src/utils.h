@@ -8,9 +8,9 @@
 #include <efi.h>
 #include <uefi.h>
 
-void* getConfigurationTable(efi_guid_t targetGuid);
+void* getConfigurationTable(EFI_GUID targetGuid);
 
-bool guidEqual(efi_guid_t a, efi_guid_t b);
+bool guidEqual(EFI_GUID a, EFI_GUID b);
 
 void waitForKey();
 
@@ -26,6 +26,6 @@ bool haveShell();
 
 int ip4MaskToCIDR(EFI_IPv4_ADDRESS* mask);
 
-const char* pixelFormatToString(efi_gop_pixel_format_t format);
+const char* pixelFormatToString(EFI_GRAPHICS_PIXEL_FORMAT format);
 
 #endif //UTILS_H

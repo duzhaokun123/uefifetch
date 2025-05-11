@@ -1,5 +1,3 @@
-set(VERSION "0.1.0")
-
 aux_source_directory(. SRC)
 aux_source_directory(modules MODULES)
 aux_source_directory(protocols PROTOCOLS)
@@ -11,12 +9,17 @@ add_executable(uefifetch
 )
 
 target_link_libraries(uefifetch
-        posix-uefi
+        uefi-libc
         lodepng
         cargs
 )
 
-target_compile_definitions(uefifetch PRIVATE
-        UEFIFETCH_ARCH="${CMAKE_SYSTEM_PROCESSOR}"
-        UEFIFETCH_VERSION="${VERSION}"
+configure_file(
+        version.h.in
+        generated/version.h
+        @ONLY
+)
+
+target_include_directories(uefifetch PRIVATE
+        ${CMAKE_CURRENT_BINARY_DIR}/generated
 )

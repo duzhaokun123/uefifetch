@@ -3,11 +3,11 @@
 //
 
 #include <efi.h>
-#include <uefi.h>
 #include <libsmbios.h>
 #include "SMBIOS.h"
 
-#include <uefi.h>
+#include <cstdio>
+#include <cstring>
 
 #include "../utils.h"
 
@@ -32,8 +32,8 @@ char* smbiosGetString(const SMBIOS_STRUCTURE_POINTER smbiosStructure, const uint
 
 // TODO: split to multiple modules
 SMBIOS::SMBIOS() : BaseModule() {
-    constexpr efi_guid_t smbiosTableGuid = SMBIOS_TABLE_GUID;
-    constexpr efi_guid_t smbios3TableGuid = SMBIOS3_TABLE_GUID;
+    constexpr EFI_GUID smbiosTableGuid = SMBIOS_TABLE_GUID;
+    constexpr EFI_GUID smbios3TableGuid = SMBIOS3_TABLE_GUID;
     const auto smbiosTable = static_cast<SMBIOS_STRUCTURE_TABLE*>(getConfigurationTable(smbiosTableGuid));
     const auto smbios3Table = static_cast<SMBIOS3_STRUCTURE_TABLE*>(getConfigurationTable(smbios3TableGuid));
     SMBIOS_STRUCTURE_POINTER smbiosStructure;

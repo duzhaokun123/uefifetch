@@ -3,11 +3,12 @@
 //
 
 #include "UefiFetch.h"
+#include "version.h"
 
 UefiFetch::UefiFetch() : BaseModule() {
     itemCount = 1;
     items = new ModuleItem[itemCount];
-    items[0] = {"UEFIFetch", "" UEFIFETCH_VERSION " (" UEFIFETCH_ARCH ", " __VERSION__ ")"};
+    items[0] = {"UEFIFetch", "" PROJECT_VERSION " (" CMAKE_SYSTEM_PROCESSOR ", " __VERSION__ ")"};
 }
 
 UefiFetch::~UefiFetch() {

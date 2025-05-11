@@ -3,16 +3,22 @@
 //
 
 #include <efi.h>
-#include <uefi.h>
 #include "print.h"
+
+#include <algorithm>
+
 #include "utils.h"
 #include "modules/BaseModule.h"
+
+#include <cstring>
+#include <cstdio>
+#include <wchar.h>
 
 void printLogo(const char** logo, const int32_t attribute, int* logoX, int* logoY, int* logoWidth, int* logoHeight) {
     const auto startAttribute = getTextColor();
     setTextColor(attribute);
-    auto line = 0;
-    auto maxWidth = 0;
+    int line = 0;
+    int maxWidth = 0;
     int startX, startY;
     int x, y;
     getCursorPosition(&startX, &startY);
@@ -20,7 +26,7 @@ void printLogo(const char** logo, const int32_t attribute, int* logoX, int* logo
         getCursorPosition(&x, &y);
         setCursorPosition(startX, y);
         const auto logoLine = logo[line];
-        maxWidth = max(maxWidth, strlen(logoLine));
+        maxWidth = std::max(maxWidth, static_cast<int>(strlen(logoLine)));
         printf("%s\n", logoLine);
         line++;
     }
@@ -63,43 +69,43 @@ void printColors(int* colorsX, int* colorsY, int* colorsWidth, int* colorsHeight
     int startX, startY;
     getCursorPosition(&startX, &startY);
     int x, y;
-#define BLOCK "███"
+#define BLOCK L"███"
     setTextColor(EFI_BLACK | EFI_BACKGROUND_BLACK);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_RED | EFI_BACKGROUND_RED);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_GREEN | EFI_BACKGROUND_GREEN);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_BROWN | EFI_BACKGROUND_BROWN);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_BLUE | EFI_BACKGROUND_BLUE);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_MAGENTA | EFI_BACKGROUND_MAGENTA);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_CYAN | EFI_BACKGROUND_CYAN);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_LIGHTGRAY | EFI_BACKGROUND_LIGHTGRAY);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(startAttribute);
     printf("\n");
     getCursorPosition(&x, &y);
     setCursorPosition(startX, y);
     setTextColor(EFI_DARKGRAY | EFI_BACKGROUND_BLACK);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_LIGHTRED | EFI_BACKGROUND_RED);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_LIGHTGREEN | EFI_BACKGROUND_GREEN);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_YELLOW | EFI_BACKGROUND_BROWN);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_LIGHTBLUE | EFI_BACKGROUND_BLUE);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_LIGHTMAGENTA | EFI_BACKGROUND_MAGENTA);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_LIGHTCYAN | EFI_BACKGROUND_LIGHTGRAY);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(EFI_WHITE | EFI_BACKGROUND_LIGHTGRAY);
-    printf(BLOCK);
+    fputws(BLOCK, stdout);
     setTextColor(startAttribute);
     printf("\n");
 #undef BLOCK

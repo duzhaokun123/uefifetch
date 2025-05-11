@@ -5,10 +5,12 @@
 #include "STOP.h"
 #include <efi.h>
 #include <uefi.h>
+#include <cstdint>
+#include <cstdio>
 
 STOP::STOP() {
-    efi_guid_t stopGuid = EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL_GUID;
-    efi_handle_t* handles = nullptr;
+    EFI_GUID stopGuid = EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL_GUID;
+    EFI_HANDLE* handles = nullptr;
     uintn_t handleCount = 0;
     BS->LocateHandleBuffer(ByProtocol, &stopGuid, nullptr, &handleCount, &handles);
     items = new ModuleItem[handleCount];

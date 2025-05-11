@@ -2,11 +2,13 @@
 // Created by o0kam1 on 25-4-12.
 //
 
-#include <efi.h>
 #include <uefi.h>
 #include "utils.h"
+#include <cstdint>
+#include <cstdio>
+#include <cstring>
 
-void* getConfigurationTable(efi_guid_t targetGuid) {
+void* getConfigurationTable(EFI_GUID targetGuid) {
     for (uintn_t i = 0; i < ST->NumberOfTableEntries; i++) {
         const auto guid = ST->ConfigurationTable[i].VendorGuid;
         if (guidEqual(targetGuid, guid)) {
@@ -16,7 +18,7 @@ void* getConfigurationTable(efi_guid_t targetGuid) {
     return nullptr;
 }
 
-bool guidEqual(const efi_guid_t a, const efi_guid_t b) {
+bool guidEqual(const EFI_GUID a, const EFI_GUID b) {
     return a.Data1 == b.Data1 && a.Data2 == b.Data2 && a.Data3 == b.Data3 && memcmp(a.Data4, b.Data4, sizeof(a.Data4)) == 0;
 }
 
@@ -43,7 +45,7 @@ int getTextColor() {
 
 bool haveShell() {
     EFI_SHELL_PROTOCOL* efiShellProtocol;
-    efi_guid_t efiShellProtocolGuid = EFI_SHELL_PROTOCOL_GUID;
+    EFI_GUID efiShellProtocolGuid = EFI_SHELL_PROTOCOL_GUID;
     return BS->LocateProtocol(&efiShellProtocolGuid, nullptr, reinterpret_cast<void**>(&efiShellProtocol)) == EFI_SUCCESS;
 }
 

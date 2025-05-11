@@ -3,14 +3,18 @@
 //
 
 #include "Memory.h"
+
+#include <cstdlib>
 #include <efi.h>
 #include <uefi.h>
+#include <cstdint>
+#include <cstdio>
 
 Memory::Memory() : BaseModule() {
-    auto size = sizeof(efi_memory_descriptor_t) * 31;
+    uintn_t size = sizeof(EFI_MEMORY_DESCRIPTOR) * 31;
 get_map:
-    size += sizeof(efi_memory_descriptor_t);
-    const auto memMap = static_cast<efi_memory_descriptor_t*>(malloc(size));
+    size += sizeof(EFI_MEMORY_DESCRIPTOR);
+    const auto memMap = static_cast<EFI_MEMORY_DESCRIPTOR*>(malloc(size));
     uintn_t mapKey, descSize;
     uint32_t descVersion;
     const auto r = BS->GetMemoryMap(&size, memMap, &mapKey, &descSize, &descVersion);
@@ -42,14 +46,14 @@ get_map:
             default:
                 break;
         }
-        desc = reinterpret_cast<efi_memory_descriptor_t*>(reinterpret_cast<uintn_t>(desc) + descSize);
+        desc = reinterpret_cast<EFI_MEMORY_DESCRIPTOR*>(reinterpret_cast<uintn_t>(desc) + descSize);
     }
     free(memMap);
 
-    const auto totalMiB = totalPages * EFI_PAGE_SIZE / 1024 / 1024;
-    const auto usedMiB = (totalPages - freePages) * EFI_PAGE_SIZE / 1024 / 1024;
-    const auto usedPercent = (usedMiB * 100) / totalMiB;
-    sprintf(memory, "%d MiB / %d MiB (%d%%)", usedMiB, totalMiB, usedPercent);
+    const size_t totalMiB = totalPages * EFI_PAGE_SIZE / 1024 / 1024;
+    const size_t usedMiB = (totalPages - freePages) * EFI_PAGE_SIZE / 1024 / 1024;
+    const size_t usedPercent = (usedMiB * 100) / totalMiB;
+    sprintf(memory, "%zu MiB / %zu MiB (%zu%%)", usedMiB, totalMiB, usedPercent);
     itemCount = 1;
     const auto memoryItem = ModuleItem{"Memory", memory};
     items = new ModuleItem[itemCount];

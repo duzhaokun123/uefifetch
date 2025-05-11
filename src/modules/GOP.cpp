@@ -5,21 +5,23 @@
 #include "GOP.h"
 #include <efi.h>
 #include <uefi.h>
+#include <cstdint>
+#include <cstdio>
 
 #include "../utils.h"
 
 GOP::GOP() {
-    efi_guid_t gopGuid = EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID;
-    efi_handle_t* handles = nullptr;
+    EFI_GUID gopGuid = EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID;
+    EFI_HANDLE* handles = nullptr;
     uintn_t handleCount = 0;
     BS->LocateHandleBuffer(ByProtocol, &gopGuid, nullptr, &handleCount, &handles);
     items = new ModuleItem[handleCount];
-    efi_gop_t* defaultGop;
+    EFI_GRAPHICS_OUTPUT_PROTOCOL* defaultGop;
     BS->LocateProtocol(&gopGuid, nullptr, reinterpret_cast<void**>(&defaultGop));
     for (uintn_t i = 0; i < handleCount; i++) {
-        efi_gop_t* gop;
+        EFI_GRAPHICS_OUTPUT_PROTOCOL* gop;
         BS->HandleProtocol(handles[i], &gopGuid, reinterpret_cast<void**>(&gop));
-        const auto modeInfo = gop->Mode->Information;
+        const auto modeInfo = gop->Mode->Info;
         const auto itemName = new char[10];
         const auto itemValue = new char[32];
         sprintf(itemName, "GOP (%u)%s", static_cast<uint32_t>(i), gop == defaultGop ? "*" : "");

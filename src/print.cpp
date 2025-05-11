@@ -5,7 +5,7 @@
 #include <efi.h>
 #include "print.h"
 
-#include <algorithm>
+// #include <algorithm>
 
 #include "utils.h"
 #include "modules/BaseModule.h"
@@ -26,7 +26,10 @@ void printLogo(const char** logo, const int32_t attribute, int* logoX, int* logo
         getCursorPosition(&x, &y);
         setCursorPosition(startX, y);
         const auto logoLine = logo[line];
-        maxWidth = std::max(maxWidth, static_cast<int>(strlen(logoLine)));
+        // maxWidth = std::max(maxWidth, static_cast<int>(strlen(logoLine)));
+#define max(a, b) ((a) > (b) ? (a) : (b))
+        maxWidth = max(maxWidth, strlen(logoLine));
+#undef max
         printf("%s\n", logoLine);
         line++;
     }

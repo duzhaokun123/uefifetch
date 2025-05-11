@@ -16,6 +16,3 @@ target_compile_definitions(lodepng PUBLIC
 target_include_directories(lodepng PUBLIC
         lodepng
 )
-target_link_libraries(lodepng PUBLIC
-        uefi-libc
-)

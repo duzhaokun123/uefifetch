@@ -4,9 +4,6 @@
 [submodule "cargs"]
 	path = cargs
 	url = https://github.com/likle/cargs.git
-[submodule "uefi-libc"]
-	path = uefi-libc
-	url = git@github.com:duzhaokun123/uefi-libc.git
 [submodule "gnu-efi"]
 	path = gnu-efi
 	url = https://github.com/rhboot/gnu-efi.git

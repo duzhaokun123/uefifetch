@@ -32,6 +32,18 @@ Why not?
 - SMBIOS
 - UefiFetch
 
+## build
+
+depend on [uefi-libc](https://github.com/duzhaokun123/uefi-libc) but any other uefi libc should work
+
+after build and install uefi-libc
+
+```bash
+cmake -S . -B build \
+    --toolchain /path/to/<arch>-uefi-clang.cmake
+cmake --build build
+```
+
 ## Usage
 
 call from UEFI shell, chainload by bootloader, direct boot from file, ..., anyway you want

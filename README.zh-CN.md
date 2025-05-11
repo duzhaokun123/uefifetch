@@ -32,6 +32,18 @@
 - SMBIOS
 - UefiFetch
 
+## 构建
+
+依赖 [uefi-libc](https://github.com/duzhaokun123/uefi-libc) 但任何其他 uefi libc 应该也可以工作
+
+构建和安装 uefi-libc 后
+
+```bash
+cmake -S . -B build \
+    --toolchain /path/to/<arch>-uefi-clang.cmake
+cmake --build build
+```
+
 ## 用法
 
 从 UEFI shell 调用, 使用 bootloader 链式引导, 直接从文件启动, ..., 或者你能想到任何方式

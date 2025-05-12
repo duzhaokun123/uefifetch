@@ -6,8 +6,7 @@
 
 #include <cstdlib>
 #include <efi.h>
-#include <uefi.h>
-#include <cstdint>
+#include <uefienv.h>
 #include <cstdio>
 
 Memory::Memory() : BaseModule() {

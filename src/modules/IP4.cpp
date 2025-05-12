@@ -3,11 +3,10 @@
 //
 
 #include <efi.h>
-#include <uefi.h>
+#include <uefienv.h>
 #include "IP4.h"
 #include "../protocols/EFI_IP4_CONFIG2_PROTOCOL.h"
 #include "../utils.h"
-#include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

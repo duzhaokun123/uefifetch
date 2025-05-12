@@ -4,8 +4,7 @@
 
 #include "FS2.h"
 #include <efi.h>
-#include <uefi.h>
-#include <cstdint>
+#include <uefienv.h>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

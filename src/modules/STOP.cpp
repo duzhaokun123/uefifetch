@@ -4,8 +4,7 @@
 
 #include "STOP.h"
 #include <efi.h>
-#include <uefi.h>
-#include <cstdint>
+#include <uefienv.h>
 #include <cstdio>
 
 STOP::STOP() {

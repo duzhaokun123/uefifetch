@@ -6,7 +6,8 @@
 
 #include <cstdio>
 #include <cstdlib>
-#include <uefi.h>
+#include <cstring>
+#include <uefienv.h>
 
 UEFI::UEFI() : BaseModule() {
     const auto vendor = static_cast<char*>(malloc(BUFSIZ));

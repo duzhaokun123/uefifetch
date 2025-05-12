@@ -1,6 +1,6 @@
 #include <efi.h>
 #include <lodepng.h>
-#include <uefi.h>
+#include <uefienv.h>
 #include "utils.h"
 #include <cargs.h>
 #include <version.h>

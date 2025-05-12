@@ -4,8 +4,7 @@
 
 #include "GOP.h"
 #include <efi.h>
-#include <uefi.h>
-#include <cstdint>
+#include <uefienv.h>
 #include <cstdio>
 
 #include "../utils.h"

@@ -2,9 +2,8 @@
 // Created by o0kam1 on 25-4-12.
 //
 
-#include <uefi.h>
+#include <uefienv.h>
 #include "utils.h"
-#include <cstdint>
 #include <cstdio>
 #include <cstring>
 

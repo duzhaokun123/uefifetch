@@ -5,8 +5,6 @@
 #ifndef SCREENSHOT_H
 #define SCREENSHOT_H
 
-#include <uefi.h>
-
 uint8_t saveScreenShot(const char* fileName);
 
 #endif //SCREENSHOT_H

@@ -6,7 +6,6 @@
 #define UTILS_H
 
 #include <efi.h>
-#include <uefi.h>
 
 void* getConfigurationTable(EFI_GUID targetGuid);
 

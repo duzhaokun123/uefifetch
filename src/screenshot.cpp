@@ -3,7 +3,7 @@
 //
 
 #include <efi.h>
-#include <uefi.h>
+#include <uefienv.h>
 #include "screenshot.h"
 #include <lodepng.h>
 

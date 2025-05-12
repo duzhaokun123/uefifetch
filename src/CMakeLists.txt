@@ -14,6 +14,7 @@ target_link_libraries(uefifetch
 )
 
 target_include_directories(uefifetch PUBLIC
+        .
         ../gnu-efi/inc
         ../gnu-efi/inc/protocol
         ../gnu-efi/inc/${CMAKE_SYSTEM_PROCESSOR}

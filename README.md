@@ -34,7 +34,7 @@ Why not?
 
 ## build
 
-depend on [uefi-libc](https://github.com/duzhaokun123/uefi-libc) but any other uefi libc should work
+depend on [uefi-libc](https://github.com/duzhaokun123/uefi-libc) but any other uefi libc should work (only need to export ST BS RS LIP to global variables)
 
 after build and install uefi-libc
 

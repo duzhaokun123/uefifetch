@@ -34,7 +34,7 @@
 
 ## 构建
 
-依赖 [uefi-libc](https://github.com/duzhaokun123/uefi-libc) 但任何其他 uefi libc 应该也可以工作
+依赖 [uefi-libc](https://github.com/duzhaokun123/uefi-libc) 但任何其他 uefi libc 应该也可以工作 (需要将 ST BS RS LIP 导出到全局变量)
 
 构建和安装 uefi-libc 后
 

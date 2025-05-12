@@ -5,6 +5,7 @@
 #include <cargs.h>
 #include <version.h>
 
+#include "cstdlib"
 #include "modules/Locale.h"
 #include "modules/Memory.h"
 #include "modules/Shell.h"
@@ -56,6 +57,11 @@ static cag_option options[]{
 };
 
 int main(const int argc, char** argv) {
+    if (ST == nullptr) {
+        fprintf(stderr, "ST is null, is this really UEFI?\n");
+        exit(1);
+    }
+
     bool noScreenshot = false;
     auto screenshotPath = "uefifetch.png";
     bool wait = false;

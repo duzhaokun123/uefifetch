@@ -12,7 +12,8 @@ endif ()
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_CXX_STANDARD 23)
 
-set(COMMON_FLAGS " -fno-stack-check -mno-red-zone -fno-rtti")
+set(COMMON_FLAGS " -fno-stack-check -mno-red-zone -fno-rtti -flto")
+string(APPEND COMMON_FLAGS " -O0") # do not optimize, break lodepng
 string(APPEND CMAKE_C_FLAGS " ${COMMON_FLAGS}")
 string(APPEND CMAKE_CXX_FLAGS " ${COMMON_FLAGS} -fno-exceptions")
 
